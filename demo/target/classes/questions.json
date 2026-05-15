@@ -1,0 +1,52 @@
+[
+  {
+    "question": "gabriel é bixa?",
+    "options": ["Sim", "Com certeza", "SIM (so que maiusculo)", "Todas as anteriores"],
+    "answer": 3
+  },
+  {
+    "question": "Qual planeta é conhecido como Planeta Vermelho?",
+    "options": ["Terra", "Marte", "Júpiter", "Saturno"],
+    "answer": 1
+  },
+  {
+    "question": "Qual é a linguagem de programação usada neste projeto?",
+    "options": ["Python", "Java", "JavaScript", "C#"],
+    "answer": 1
+  },
+  {
+    "question": "Quantos estados existem no Brasil?",
+    "options": ["26", "27", "25", "28"],
+    "answer": 1
+  },
+  {
+    "question": "Qual é a capital da França?",
+    "options": ["Londres", "Berlim", "Paris", "Roma"],
+    "answer": 2
+  },
+  {
+    "question": "Qual é o maior oceano do mundo?",
+    "options": ["Atlântico", "Índico", "Ártico", "Pacífico"],
+    "answer": 3
+  },
+  {
+    "question": "Quem pintou a Mona Lisa?",
+    "options": ["Vincent van Gogh", "Pablo Picasso", "Leonardo da Vinci", "Michelangelo"],
+    "answer": 2
+  },
+  {
+    "question": "Qual é a fórmula química da água?",
+    "options": ["H2O", "CO2", "O2", "NaCl"],
+    "answer": 0
+  },
+  {
+    "question": "Qual é o símbolo químico do ouro?",
+    "options": ["Ag", "Au", "Fe", "Pb"],
+    "answer": 1
+  },
+  {
+    "question": "Qual é o maior animal terrestre?",
+    "options": ["Thais carla", "Girafa", "Rinoceronte branco", "Hipopótamo"],
+    "answer": 0
+  }
+]
