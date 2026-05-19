@@ -19,6 +19,14 @@ public class QuizGame {
         this.correctStreakWithoutHelp = 0;
     }
 
+    // Construtor de escopo de pacote para injeção nos testes
+    QuizGame(List<Question> questions, Scanner scanner) {
+        this.questions = questions;
+        this.scanner = scanner;
+        this.helps = new HelpState();
+        this.correctStreakWithoutHelp = 0;
+    }
+
     public void play() {
         TerminalUtils.clearScreen();
         printWelcomeMessage();
@@ -200,7 +208,7 @@ public class QuizGame {
     }
 
     private void printErrorMessage(Question question) {
-        System.out.print("COLQUE AQUI SUA MENSAGEM DE ERRO");
+        System.out.println("Que pena! Você errou e foi eliminado do jogo.");
         System.out.printf("Resposta errada. A resposta certa era: %s%n%n", question.getOptions().get(question.getAnswer()));
     }
 
@@ -210,9 +218,9 @@ public class QuizGame {
                 "| $$  \\__/  /$$$$$$  /$$$$$$$ | $$$$$$$   /$$$$$$  /$$   /$$        /$$$$$$ \r\n" + //
                 "| $$ /$$$$ |____  $$| $$__  $$| $$__  $$ /$$__  $$| $$  | $$       /$$__  $$\r\n" + //
                 "| $$|_  $$  /$$$$$$$| $$  \\ $$| $$  \\ $$| $$  \\ $$| $$  | $$      | $$  \\__/ \r\n" + //
-                "| $$  \$$ /$$__  $$| $$  | $$| $$  | $$| $$  | $$| $$  | $$      | $$  \r\n" + //
+                "| $$  \\ $$/$$__  $$| $$  | $$| $$  | $$| $$  | $$| $$  | $$      | $$  \r\n" + //
                 "|  $$$$$$/|  $$$$$$$| $$  | $$| $$  | $$|  $$$$$$/|  $$$$$$/      |  $$$$$$/\r\n" + //
-                " \______/  \_______/|__/  |__/|__/  |__/ \\______/  \\______/        \\______/ \r\n" + //
+                " \\______/  \\_______/|__/  |__/|__/  |__/ \\______/  \\______/        \\______/ \r\n" + //
                 "                                                                            \r\n" + //
                 "                                                                            \r\n" + //
                 "                                                                            ");
@@ -239,9 +247,8 @@ public class QuizGame {
         return text.substring(0, 1).toUpperCase() + text.substring(1).toLowerCase();
     }
 
-    private boolean isHardDifficulty(Question question) {
+    boolean isHardDifficulty(Question question) {
         String difficulty = question.getDifficulty().toLowerCase();
         return difficulty.equals("difícil") || difficulty.equals("dificil");
     }
 }
-
