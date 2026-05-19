@@ -10,13 +10,13 @@ public class QuizGame {
     private final Scanner scanner;
     private final HelpState helps;
     private int score;
-    private int correctStreakWithoutHint;
+    private int correctStreakWithoutHelp;
 
     public QuizGame(List<Question> questions) {
         this.questions = questions;
         this.scanner = new Scanner(System.in, StandardCharsets.UTF_8);
         this.helps = new HelpState();
-        this.correctStreakWithoutHint = 0;
+        this.correctStreakWithoutHelp = 0;
     }
 
     public void play() {
@@ -28,39 +28,38 @@ public class QuizGame {
         for (int i = 0; i < total; i++) {
             TerminalUtils.clearScreen();
             printWelcomeMessage();
+
             Question question = questions.get(i);
             printQuestionHeader(i + 1, total, question);
             printQuestionText(question);
 
             List<Integer> visibleOptions = buildOptionIndexes(question.getOptions().size());
-            boolean hintWasAvailableBeforeQuestion = helps.isHintAvailable();
             int selectedOption = askQuestion(question, visibleOptions, i + 1, total);
 
             if (selectedOption < 0) {
                 System.out.println("Pergunta pulada.\n");
-                correctStreakWithoutHint = 0;
+                correctStreakWithoutHelp = 0;
                 continue;
             }
 
             if (selectedOption == question.getAnswer()) {
                 printCorrectMessage();
                 score++;
-                
-                boolean hintUsedDuringQuestion = hintWasAvailableBeforeQuestion && !helps.isHintAvailable();
-                if (!isHardDifficulty(question) && !hintUsedDuringQuestion) {
-                    correctStreakWithoutHint++;
-                    if (correctStreakWithoutHint >= 5) {
-                        helps.resetHint();
-                        System.out.println("\n🎉 Parabéns! Você acertou 5 perguntas seguidas sem usar dica!");
-                        System.out.println("Ganhou uma dica aleatória!");
+
+                if (!isHardDifficulty(question)) {
+                    correctStreakWithoutHelp++;
+                    if (correctStreakWithoutHelp >= 5) {
+                        String grantedHelp = helps.grantRandomHelp();
+                        System.out.println("\nParabéns! Você acertou 5 perguntas seguidas sem usar ajuda!");
+                        System.out.printf("Ganhou uma ajuda extra: %s%n", grantedHelp);
                         TerminalUtils.sleep(2000);
-                        correctStreakWithoutHint = 0;
+                        correctStreakWithoutHelp = 0;
                     }
                 } else {
-                    correctStreakWithoutHint = 0;
+                    correctStreakWithoutHelp = 0;
                 }
             } else {
-                correctStreakWithoutHint = 0;
+                correctStreakWithoutHelp = 0;
                 printErrorMessage(question);
                 scanner.close();
                 return;
@@ -190,10 +189,10 @@ public class QuizGame {
     }
 
     private void printHelpStatus() {
-        System.out.printf("[H] Dica (%s)  [X] 50/50 (%s)  [P] Pular (%s)%n",
-                helps.isHintAvailable() ? "disponível" : "usada",
-                helps.isFiftyAvailable() ? "disponível" : "usada",
-                helps.isSkipAvailable() ? "disponível" : "usada");
+        System.out.printf("[H] Dica (%d)  [X] 50/50 (%d)  [P] Pular (%d)%n",
+                helps.getHintCount(),
+                helps.getFiftyCount(),
+                helps.getSkipCount());
     }
 
     private void printCorrectMessage() {
@@ -206,7 +205,31 @@ public class QuizGame {
     }
 
     private void printVictoryMessage() {
-        System.out.print("COLQUE AQUI SUA MENSAGEM DE VITORIA");
+        System.out.println("  /$$$$$$                      /$$                                          \r\n" + //
+                " /$$__  $$                    | $$                                          \r\n" + //
+                "| $$  \\__/  /$$$$$$  /$$$$$$$ | $$$$$$$   /$$$$$$  /$$   /$$        /$$$$$$ \r\n" + //
+                "| $$ /$$$$ |____  $$| $$__  $$| $$__  $$ /$$__  $$| $$  | $$       /$$__  $$\r\n" + //
+                "| $$|_  $$  /$$$$$$$| $$  \\ $$| $$  \\ $$| $$  \\ $$| $$  | $$      | $$  \\__/ \r\n" + //
+                "| $$  \$$ /$$__  $$| $$  | $$| $$  | $$| $$  | $$| $$  | $$      | $$  \r\n" + //
+                "|  $$$$$$/|  $$$$$$$| $$  | $$| $$  | $$|  $$$$$$/|  $$$$$$/      |  $$$$$$/\r\n" + //
+                " \______/  \_______/|__/  |__/|__/  |__/ \\______/  \\______/        \\______/ \r\n" + //
+                "                                                                            \r\n" + //
+                "                                                                            \r\n" + //
+                "                                                                            ");
+        System.out.print("                                   .-'\"`/\\\r\n" + //
+                "                                  // /' /\\`\\\r\n" + //
+                "                                ('//.-'/`-.;\r\n" + //
+                "                                 \\ \\ / /-.\r\n" + //
+                "              __.__.___..__._.___.\\\\ \\\\----,_\r\n" + //
+                "           .:{@&#,&#@&,@&#&&,#&@#&@&\\\\` \\-. .-'-.\r\n" + //
+                "        .:{@#@,#@&#,@#&&#,@&#&@&,&@#&&\\\\, -._,\"- \\\r\n" + //
+                "      .{#@#&@#@&#&@#@&#@#@#@&&#@&@#@&&#@#\\ \\// = \\\`=__\r\n" + //
+                "      `{#@,@#&@&,@&#@,#@&#@#&@,&#@,#/\\/ =`-. -_=__\r\n" + //
+                "        `:{@#&@&#@&#@&#@,#&&#@&,@#/.'  / / \"/.-', / / \r\n" + //
+                "           `:{@#&,#&@#,@&#&@&,@&#/.-// //-'-_= \",/\\\r\n" + //
+                "              `~`~~`~~~`~`~`~~`~( / , /__,___.-\"\\\r\n" + //
+                "                                 \\\\ \\\\/\r\n" + //
+                "                                  `\\\\\\'");
     }
 
     private String capitalize(String text) {
@@ -221,3 +244,4 @@ public class QuizGame {
         return difficulty.equals("difícil") || difficulty.equals("dificil");
     }
 }
+

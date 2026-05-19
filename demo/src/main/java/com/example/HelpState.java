@@ -2,42 +2,75 @@ package com.example;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class HelpState {
-    private boolean hintUsed;
-    private boolean fiftyUsed;
-    private boolean skipUsed;
+    private int hintCount;
+    private int fiftyCount;
+    private int skipCount;
+
+    public HelpState() {
+        this.hintCount = 1;
+        this.fiftyCount = 1;
+        this.skipCount = 1;
+    }
 
     public boolean isHintAvailable() {
-        return !hintUsed;
+        return hintCount > 0;
     }
 
     public boolean isFiftyAvailable() {
-        return !fiftyUsed;
+        return fiftyCount > 0;
     }
 
     public boolean isSkipAvailable() {
-        return !skipUsed;
+        return skipCount > 0;
     }
 
     public boolean noHelpsLeft() {
         return !isHintAvailable() && !isFiftyAvailable() && !isSkipAvailable();
     }
 
+    public int getHintCount() {
+        return hintCount;
+    }
+
+    public int getFiftyCount() {
+        return fiftyCount;
+    }
+
+    public int getSkipCount() {
+        return skipCount;
+    }
+
     public void useHint() {
-        hintUsed = true;
+        hintCount = Math.max(0, hintCount - 1);
     }
 
     public void useFifty() {
-        fiftyUsed = true;
+        fiftyCount = Math.max(0, fiftyCount - 1);
     }
 
     public void useSkip() {
-        skipUsed = true;
+        skipCount = Math.max(0, skipCount - 1);
     }
 
-    public void resetHint() {
-        hintUsed = false;
+    public String grantRandomHelp() {
+        int pick = ThreadLocalRandom.current().nextInt(3);
+        switch (pick) {
+            case 0 -> {
+                hintCount++;
+                return "Dica";
+            }
+            case 1 -> {
+                fiftyCount++;
+                return "50/50";
+            }
+            default -> {
+                skipCount++;
+                return "Pular";
+            }
+        }
     }
 
     public String formatAvailableHelps() {
@@ -57,3 +90,4 @@ public class HelpState {
         return String.join(", ", available);
     }
 }
+
