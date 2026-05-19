@@ -1,52 +1,107 @@
 [
   {
-    "question": "gabriel é bixa?",
-    "options": ["Sim", "Com certeza", "SIM (so que maiusculo)", "Todas as anteriores"],
-    "answer": 3
-  },
-  {
-    "question": "Qual planeta é conhecido como Planeta Vermelho?",
-    "options": ["Terra", "Marte", "Júpiter", "Saturno"],
-    "answer": 1
-  },
-  {
-    "question": "Qual é a linguagem de programação usada neste projeto?",
-    "options": ["Python", "Java", "JavaScript", "C#"],
-    "answer": 1
-  },
-  {
-    "question": "Quantos estados existem no Brasil?",
-    "options": ["26", "27", "25", "28"],
-    "answer": 1
-  },
-  {
-    "question": "Qual é a capital da França?",
-    "options": ["Londres", "Berlim", "Paris", "Roma"],
-    "answer": 2
-  },
-  {
-    "question": "Qual é o maior oceano do mundo?",
-    "options": ["Atlântico", "Índico", "Ártico", "Pacífico"],
-    "answer": 3
-  },
-  {
-    "question": "Quem pintou a Mona Lisa?",
-    "options": ["Vincent van Gogh", "Pablo Picasso", "Leonardo da Vinci", "Michelangelo"],
-    "answer": 2
+    "question": "Qual é a capital do Brasil?",
+    "options": ["Brasília", "Rio de Janeiro", "São Paulo", "Salvador"],
+    "answer": 0,
+    "difficulty": "fácil",
+    "hint": "A cidade foi planejada e inaugurada em 1960."
   },
   {
     "question": "Qual é a fórmula química da água?",
     "options": ["H2O", "CO2", "O2", "NaCl"],
-    "answer": 0
+    "answer": 0,
+    "difficulty": "fácil",
+    "hint": "Ela é composta por hidrogênio e oxigênio."
+  },
+  {
+    "question": "Qual é a capital da França?",
+    "options": ["Londres", "Berlim", "Paris", "Roma"],
+    "answer": 2,
+    "difficulty": "fácil",
+    "hint": "É famosa pela Torre Eiffel."
   },
   {
     "question": "Qual é o símbolo químico do ouro?",
     "options": ["Ag", "Au", "Fe", "Pb"],
-    "answer": 1
+    "answer": 1,
+    "difficulty": "fácil",
+    "hint": "Começa com a letra A e é derivado do latim aurum."
   },
   {
-    "question": "Qual é o maior animal terrestre?",
-    "options": ["Thais carla", "Girafa", "Rinoceronte branco", "Hipopótamo"],
-    "answer": 0
+    "question": "Qual é o maior planeta do sistema solar?",
+    "options": ["Terra", "Marte", "Júpiter", "Saturno"],
+    "answer": 2,
+    "difficulty": "fácil",
+    "hint": "Ele é conhecido pelo seu furacão maior que a Terra."
+  },
+  {
+    "question": "Qual é o maior oceano do mundo?",
+    "options": ["Atlântico", "Índico", "Ártico", "Pacífico"],
+    "answer": 3,
+    "difficulty": "média",
+    "hint": "O nome significa também paz em inglês."
+  },
+  {
+    "question": "Quem pintou a Mona Lisa?",
+    "options": ["Vincent van Gogh", "Pablo Picasso", "Leonardo da Vinci", "Michelangelo"],
+    "answer": 2,
+    "difficulty": "média",
+    "hint": "Ele também era inventor e viveu no Renascimento."
+  },
+  {
+    "question": "Quem escreveu 'Dom Casmurro'?",
+    "options": ["Machado de Assis", "Jorge Amado", "Carlos Drummond de Andrade", "Clarice Lispector"],
+    "answer": 0,
+    "difficulty": "média",
+    "hint": "É considerado um dos maiores autores da literatura brasileira do século XIX."
+  },
+  {
+    "question": "Quanto é 12 vezes 12?",
+    "options": ["124", "144", "132", "156"],
+    "answer": 1,
+    "difficulty": "média",
+    "hint": "É um número maior que 140 e menor que 150."
+  },
+  {
+    "question": "Qual é o idioma oficial do Brasil?",
+    "options": ["Espanhol", "Português", "Inglês", "Francês"],
+    "answer": 1,
+    "difficulty": "média",
+    "hint": "É o mesmo idioma falado em Portugal."
+  },
+  {
+    "question": "Quantos estados existem no Brasil?",
+    "options": ["26", "27", "25", "28"],
+    "answer": 1,
+    "difficulty": "difícil",
+    "hint": "Inclui o Distrito Federal."
+  },
+  {
+    "question": "Qual foi o nome do primeiro satélite artificial lançado ao espaço?",
+    "options": ["Sputnik 1", "Apollo 11", "Voyager 1", "Mercúrio 1"],
+    "answer": 0,
+    "difficulty": "difícil",
+    "hint": "Foi lançado pela União Soviética em 1957."
+  },
+  {
+    "question": "Quantos minutos há em 3 horas e meia?",
+    "options": ["180", "190", "210", "220"],
+    "answer": 2,
+    "difficulty": "difícil",
+    "hint": "Uma hora tem 60 minutos."
+  },
+  {
+    "question": "Qual é a capital da Austrália?",
+    "options": ["Sydney", "Melbourne", "Canberra", "Brisbane"],
+    "answer": 2,
+    "difficulty": "difícil",
+    "hint": "Não é a cidade mais populosa do país."
+  },
+  {
+    "question": "Qual elemento químico tem número atômico 6?",
+    "options": ["Oxigênio", "Carbono", "Nitrogênio", "Ferro"],
+    "answer": 1,
+    "difficulty": "difícil",
+    "hint": "É um elemento essencial em todos os seres vivos."
   }
 ]
